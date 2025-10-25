@@ -6,7 +6,7 @@ Before=ly.service display-manager.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/sbin/de-user-add.sh
+ExecStart=/usr/bin/de-user-add
 RemainAfterExit=yes
 
 [Install]

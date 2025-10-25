@@ -2,5 +2,6 @@
 auth       include      system-auth
 account    include      system-auth
 password   include      system-auth
-session    required     pam_exec.so seteuid /usr/local/sbin/ly-session-verify.sh
+# Enforce per-user session lock via PAM hook
+session    required     pam_exec.so seteuid /usr/libexec/kaleidos/ly-session-verify.sh
 session    include      system-auth

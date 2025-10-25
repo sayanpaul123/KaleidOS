@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Wrapper so users can run `de-user-add` directly.
+set -euo pipefail
+
+# Re-exec with sudo if not root
+if [[ $EUID -ne 0 ]]; then
+  exec sudo -- /usr/libexec/kaleidos/de-user-add.sh "$@"
+else
+  exec /usr/libexec/kaleidos/de-user-add.sh "$@"
+fi

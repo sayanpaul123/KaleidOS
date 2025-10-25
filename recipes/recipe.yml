@@ -23,9 +23,9 @@ modules:
         - ly
         - dialog
         - acl
-        - power-profiles-daemon 
-        - micro
-        - starship
+        # - power-profiles-daemon 
+        # - micro
+        # - starship
     group-install:
       packages:
         - kde-desktop-environment
@@ -40,7 +40,7 @@ modules:
     system:
       enabled:
         - ly.service
-        - power-profiles-daemon.service
+        # - power-profiles-daemon.service
         - de-firstboot.service
     user:
       enabled:

@@ -31,10 +31,10 @@ modules:
         - kde-desktop-environment
         # - xfce-desktop-environment
         - pantheon-desktop-environment
-    remove:
-      packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
+    # remove:
+    #   packages:
+    #     # example: removing firefox (in favor of the flatpak)
+    #     # "firefox" is the main package, "firefox-langpacks" is a dependency
   - type: systemd
 # this example disables automatic flatpak updates and enables a custom service unit for all users
     system:

@@ -48,7 +48,7 @@ modules:
         - sddm.service
         # - lightdm.service
         - display-manager.service
-    masked:
+      masked:
         - gdm.service
         - sddm.service
         # - lightdm.service

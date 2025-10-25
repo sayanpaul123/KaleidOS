@@ -1,0 +1,13 @@
+[Unit]
+Description=Run DE user creator once on first boot (ly)
+ConditionFirstBoot=yes
+After=multi-user.target
+Before=ly.service display-manager.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/de-user-add.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

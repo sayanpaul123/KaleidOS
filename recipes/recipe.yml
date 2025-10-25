@@ -18,28 +18,50 @@ modules:
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
   - type: dnf
-    repos:
-      copr:
-        - atim/starship
     install:
       packages:
+        - ly
+        - dialog
+        - acl
+        - power-profiles-daemon 
         - micro
         - starship
+        - @kde-desktop-environment
+        # - @xfce-desktop-environment
+        - @pantheon-desktop-environment
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
         # "firefox" is the main package, "firefox-langpacks" is a dependency
-        - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+  - type: systemd
+# this example disables automatic flatpak updates and enables a custom service unit for all users
+    system:
+      enabled:
+        - ly.service
+        - power-profiles-daemon.service
+        - de-firstboot.service
+    user:
+      enabled:
+        - my-custom.service
+      disabled:
+        - org.gnome.SettingsDaemon.Power.service
+        - powerdevil.service
+        # - xfce4-power-manager.service
+        - io.elementary.settings-daemon.power.service
+      masked:
+        - org.gnome.SettingsDaemon.Power.service
+        - powerdevil.service
+        # - xfce4-power-manager.service
+        - io.elementary.settings-daemon.power.service
 
-  - type: default-flatpaks
-    configurations:
-      - notify: true # Send notification after install/uninstall is finished (true/false)
-        scope: system
-        # If no repo information is specified, Flathub will be used by default
-        install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
-          - org.gnome.Loupe
-      - scope: user # Also add Flathub user repo, but no user packages
+  # - type: default-flatpaks
+  #   configurations:
+  #     - notify: true # Send notification after install/uninstall is finished (true/false)
+  #       scope: system
+  #       # If no repo information is specified, Flathub will be used by default
+  #       install: # system flatpaks we want all users to have and not remove
+  #         - org.mozilla.firefox
+  #         - org.gnome.Loupe
+  #     - scope: user # Also add Flathub user repo, but no user packages
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

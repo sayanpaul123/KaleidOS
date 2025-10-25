@@ -1,0 +1,7 @@
+[terminal]
+vt = 1
+
+[default_session]
+# Tuigreet as greeter, launching our dispatcher after auth
+command = "tuigreet --time --remember --user-menu --cmd /usr/libexec/kaleidos/session-dispatch.sh"
+user = "greeter"

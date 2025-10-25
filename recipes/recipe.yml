@@ -20,7 +20,8 @@ modules:
   - type: dnf
     install:
       packages:
-        - ly
+        - greetd
+        - tuigreet
         - dialog
         - acl
         # - power-profiles-daemon 
@@ -39,12 +40,21 @@ modules:
 # this example disables automatic flatpak updates and enables a custom service unit for all users
     system:
       enabled:
-        - ly.service
+        - greetd.service
         # - power-profiles-daemon.service
         - de-firstboot.service
+      disabled:
+        - gdm.service
+        - sddm.service
+        # - lightdm.service
+        - display-manager.service
+    masked:
+        - gdm.service
+        - sddm.service
+        # - lightdm.service
+        - display-manager.service
+        - getty@tty1.service
     user:
-      enabled:
-        - my-custom.service
       disabled:
         - org.gnome.SettingsDaemon.Power.service
         - powerdevil.service

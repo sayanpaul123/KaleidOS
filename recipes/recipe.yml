@@ -18,12 +18,29 @@ modules:
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
   - type: dnf
+    repos:
+      files:
+        - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+        - vscode.repo
+        - 1password.repo
+        - https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+    keys:
+        - https://packages.microsoft.com/keys/microsoft.asc
+        - https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+        - https://downloads.1password.com/linux/keys/1password.asc
     install:
       packages:
         - greetd
         - tuigreet
         - dialog
         - acl
+        - code
+        - sublime-text
+        - tailscale
+        - xeyes
+        - https://bitwarden.com/download/?app=desktop&platform=linux&variant=rpm
+        - gnome-themes-extra
+        - 1password
         # - power-profiles-daemon 
         # - micro
         # - starship
@@ -36,6 +53,12 @@ modules:
     #   packages:
     #     # example: removing firefox (in favor of the flatpak)
     #     # "firefox" is the main package, "firefox-langpacks" is a dependency
+  
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode 
+
   - type: systemd
 # this example disables automatic flatpak updates and enables a custom service unit for all users
     system:
@@ -43,6 +66,7 @@ modules:
         - greetd.service
         # - power-profiles-daemon.service
         - de-firstboot.service
+        - tailscaled
       disabled:
         - gdm.service
         - sddm.service

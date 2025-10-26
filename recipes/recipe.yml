@@ -12,6 +12,10 @@ image-version: 42 # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
+  - type: akmods
+    nvidia-driver: nvidia-open
+    install:
+      - xone
   - type: files
     files:
       - source: system
@@ -24,7 +28,7 @@ modules:
         - vscode.repo
         - 1password.repo
         - https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
-    keys:
+      keys:
         - https://packages.microsoft.com/keys/microsoft.asc
         - https://download.sublimetext.com/sublimehq-rpm-pub.gpg
         - https://downloads.1password.com/linux/keys/1password.asc

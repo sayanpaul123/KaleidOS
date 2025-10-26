@@ -100,6 +100,7 @@ main(){
 
   useradd -m -s /bin/bash "$username"
   echo "$username:$password" | chpasswd
+  usermod -aG wheel "$username"
   chmod 700 "/home/$username"
   loginctl enable-linger "$username" || true
 
